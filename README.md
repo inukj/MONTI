@@ -11,9 +11,9 @@ bin/samp_to_mat.py -i dataset/STAD/data/omics_STAD_gene_genecentric.csv dataset/
 
 ### running MONTI
 ``` bash
-rank=150	# number of ranks (features)
-monti_outputdir="dataset/STAD/output"
-bin/monti.py -f $monti_input_dir/tensor.subtype.npy -s $monti_input_dir/sampinfo_subtype.txt -g $monti_input_dir/geneinfo_subtype.txt -r $rank -o $monti_outputdir --plot
+      rank=150	# number of ranks (features)
+      monti_outputdir="dataset/STAD/output"
+      bin/monti.py -f $monti_input_dir/tensor.subtype.npy -s $monti_input_dir/sampinfo_subtype.txt -g $monti_input_dir/geneinfo_subtype.txt -r $rank -o $monti_outputdir --plot
 ```
 
 ## Using the COAD data
