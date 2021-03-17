@@ -5,7 +5,10 @@
 >MONTI (Multi-Omics Non-negative Tensor decomposition for Integrative analysis) is a tool that can be used to integrate and analyze large sets of multi-omics data. MONTI identifies gene regulatory multi-omics features specific to a group of samples that share a common biological trait.
 >
 >Below is an illustration of the analysis workflow of MONTI.
-![workflow](./images/monti_workflow.jpg)
+>![workflow](./images/monti_workflow.jpg)
+>
+>The output of MONTI is a simple gene list with information of their associated subtypes, which can be used for further downstream analysis. For example, the Venn diagram below shows the genes that are found to be associated to colorectal cancer subtypes CMS1, CMS2, CMS3 and CMS4. These genes showed to be informative in separating the four subtypes as shown in the t-SNE plot.
+>![example output](./images/monti_output.jpg)
 
 ## Using the STAD data
 
