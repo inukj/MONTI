@@ -6,10 +6,7 @@
 ### Generate input data for MONTI
 ``` bash
 monti_input_dir="dataset/STAD/inputdata"
-bin/samp_to_mat.py -i dataset/STAD/data/omics_STAD_gene_genecentric.csv  
-dataset/STAD/data/omics_STAD_meth450_genecentric.csv  
-dataset/STAD/data/omics_STAD_mirna_genecentric.csv  
--s dataset/STAD/subtype_info.txt -r subtype -g dataset/gene_info_withheader.txt  -o $monti_input_dir
+bin/samp_to_mat.py -i dataset/STAD/data/omics_STAD_gene_genecentric.csv dataset/STAD/data/omics_STAD_meth450_genecentric.csv dataset/STAD/data/omics_STAD_mirna_genecentric.csv -s dataset/STAD/subtype_info.txt -r subtype -g dataset/gene_info_withheader.txt  -o $monti_input_dir
 ```
 
 ### running MONTI
