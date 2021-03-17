@@ -1,11 +1,11 @@
 # MONTI tutorial
 
 >Multi-omics data is frequently measured to characterize biological mechanisms underlying phenotypes. Complex relationships in multi-omics data, if mined, can lead to more accurate classification of patient samples according to the phenotypes.
-
+>
 >MONTI (Multi-Omics Non-negative Tensor decomposition for Integrative analysis) is a tool that can be used to integrate and analyze large sets of multi-omics data. MONTI identifies gene regulatory multi-omics features specific to a group of samples that share a common biological trait.
-
+>
 >Below is an illustration of the analysis workflow of MONTI.
-
+![workflow](./images/workflow.jpg)
 
 ## Using the STAD data
 
