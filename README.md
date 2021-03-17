@@ -8,7 +8,8 @@ Below is an illustration of the analysis workflow of MONTI.
 ![workflow](./images/monti_workflow.jpg)
 
 The output of MONTI is a simple gene list with information of their associated subtypes, which can be used for further downstream analysis. For example, the Venn diagram below shows the genes that are found to be associated to colorectal cancer subtypes CMS1, CMS2, CMS3 and CMS4. These genes showed to be informative in separating the four subtypes as shown in the t-SNE plot.
-![example output](./images/monti_outputexample.png =250x)
+<!--![example output](./images/monti_outputexample.png =250x)-->
+<img src="./images/monti_outputexample.png" alt="example output" width="200"/>
 
 ## Using the STAD data
 
