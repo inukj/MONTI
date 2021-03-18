@@ -90,7 +90,7 @@ tar -xzvf COAD_data.tar.gz
 ``` bash
 cd <path to MONTI>
 input_dir="dataset/COAD/inputdata/"
-python bin/samp_to_mat.py -i dataset/COAD/data/omics_COAD_gene_genecentric.csv dataset/COAD/data/omics_COAD_meth450_genecentric.csv dataset/COAD/data/omics_COAD_mirna_genecentric.csv -s dataset/COAD/data/subtype_info.txt -l subtype -g dataset/gene_info_withheader.txt -o $input_dir
+python bin/samp_to_mat.py -i dataset/COAD/data/omics_COAD_gene_genecentric.csv dataset/COAD/data/omics_COAD_meth450_genecentric.csv dataset/COAD/data/omics_COAD_mirna_genecentric.csv -s dataset/COAD/data/subtype_info.txt -l subtype -g dataset/gene_list.txt -o $input_dir
 ```
 
 3. Run MONTI  
