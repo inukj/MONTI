@@ -24,7 +24,7 @@ The output of MONTI is a simple gene list with information of their associated s
 
 The input to MONTI are gene-centric omics matrices. The omics matrices must be of the same dimensions, which are matrices of _m x n_. Here, _m_ is the number of genes and _n_ the number of patients. Hence, every omics data are bundled into units of genes to generate a gene-centric matrix.
 
-Assuming that the omics are processed into gene-centric format, each omics data are further pre-processed. This can be using the `samp_to_mat.py` code, which compiles omics into patient matched data and normalizes data accordingly. For example, if mRNA, methylation and miRNA omics data are given, patients with all the three omics data are selected, which will serve as the data used by MONTI. The output of `samp_to_mat.py` is the input data used by MONTI. Users may prepare their own omics data.
+Assuming that the omics are processed into gene-centric format, each omics data are further pre-processed. This can be done using the `samp_to_mat.py` code, which compiles omics into patient matched data and normalizes data accordingly. For example, if mRNA, methylation and miRNA omics data are given, patients with all the three omics data are selected, which will serve as the data used by MONTI. The output of `samp_to_mat.py` is the input data used by MONTI. Users may prepare their own omics data.
 
 
 ```bash
@@ -41,6 +41,7 @@ usage: samp_to_mat.py [-h] -i OMICS1_FILE OMICS2_FILE OMICS3_FILE ... -s SAMPLE_
 -o: the output path
 ```
 
+Now, if the input data are prepared, MONTI can be run as follows:
 ```bash
 usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO -g GENE_INFO
 	[-surv SURVIVAL_INFO] [-o OUTDIR] [--plot]
