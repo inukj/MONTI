@@ -30,7 +30,7 @@ Assuming that the omics are processed into gene-centric format, each omics data 
 
 
 ```bash
-usage: samp_to_mat.py [-h] -i OMICS1_FILE OMICS2_FILE OMICS3_FILE ... -s SAMPLE_INFO -g GENE_INFO
+usage: samp_to_mat.py [-h] -i OMICS1_MAT OMICS2_MAT OMICS3_MAT ... -s SAMPLE_INFO -g GENE_INFO
 	[-l GROUP_LABEL] [-o OUTDIR]
 
 # mandatory arguements
@@ -72,7 +72,7 @@ In the output directory the following output files can be found.
 * patient_models/: the classification models generated using the patient features
 * gene_models/: the classification models generated using the gene features
 * plots/: 
-	gene_plots_<subtype>.pdf: multi-omics scatter plot of the feature associated genes
+* gene_plots_<subtype>.pdf: multi-omics scatter plot of the feature associated genes
 	sample_tSNE.pdf: the t-SNE plot of the patient features
 
 ---
