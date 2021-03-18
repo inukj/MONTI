@@ -13,8 +13,9 @@ The output of MONTI is a simple gene list with information of their associated s
 
 ---
 
-# MONTI v1.0
-# Python version>=3.6 is required to run MONTI
+## Prerequisites
+* Python version>=3.6 is required
+
 
 ## Installing MONTI
 ```bash
@@ -46,18 +47,12 @@ usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO
 Due to the nature of selecting features include some randomness (repeated 10-fold cross validation, random splitting of test and train samples), the results from our study cannot be completely reproduced. However, the variance should not be significant.
 
 To reproduce the results in our study, please follow the instructions below.
-1. Installing MONTI	(uncompress files & install required modules)
-  ```bash
-  tar -xzvf monti_v1.3.tar.gz
-  sudo python3 install_monti.py
-  ```
-
-2. Execute MONTI using the previously decomposed components
+> Execute MONTI using the previously decomposed components
   ```bash
   python3 monti.py -f inputdata/tensor_BRCA_log2_qnormalized_scaled.npy -r 450 -s inputdata/sample_info.txt --plot -o output_paper
   ```
 
-3. The following result files can be found under the "output_paper" directory
+> The following result files can be found under the "output_paper" directory
 	> sample_features_r450.txt: the breast cancer subtype associated patient features
 	> feature_genes_r450.txt: the feature associated genes
 	> accuracy_patients_r450.txt: the classification accuracy using patient features
