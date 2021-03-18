@@ -3,7 +3,7 @@ import subprocess
 import numpy as np
 from pathlib import Path
 
-__version__="2.1"
+__version__="1.0"
 
 class data_info:
 	samp_labels={}

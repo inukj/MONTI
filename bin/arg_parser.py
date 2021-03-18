@@ -10,7 +10,6 @@ class input_info:
 	sampinfo = ''
 	geneinfo=''
 	omics_n=0
-	survival = ''
 	plot = ''
 	dmaxiter = ''
 	alpha = ''
@@ -47,12 +46,10 @@ def parse_args():
 	info.rank = args['rank']
 	info.sampinfo = args['sample_info']
 	info.geneinfo = args['gene_info']
-	info.survival = args['survival_info']
 	info.plot = args['plot']
 	info.dmaxiter = args['dmax_iter']
 	info.alpha = args['alpha']
-	info.pre = args['preprocess_dir']
-	info.input_files=[args['sample_info'], args['gene_info'], args['survival_info']]
+	info.input_files=[args['sample_info'], args['gene_info']]
 
 	return info
 

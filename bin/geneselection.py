@@ -1,4 +1,3 @@
-import sys
 import warnings
 warnings.filterwarnings("ignore")
 import joblib
@@ -6,12 +5,9 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.backends.backend_pdf
-
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 from sklearn.manifold import TSNE
-
-import survival_mod as surv
 from utils import *
 
 def print_header():

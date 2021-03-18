@@ -1,4 +1,3 @@
-import sys
 import warnings
 warnings.filterwarnings("ignore")
 import time
@@ -9,7 +8,6 @@ from sklearn.neural_network import MLPClassifier
 import joblib
 import matplotlib.pyplot as plt
 import matplotlib.backends.backend_pdf
-import survival_mod as surv
 
 from utils import *
 

@@ -66,7 +66,7 @@ usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO -g GENE_INFO
 -o:	 the output directory name (default: 'output')
 ```
 
-## MONTI tutorial 
+## MONTI tutorial using COAD omics data (mRNA, methylaion, miRNA)
 Below is a brief tutorial using the COAD mRNA, methylation and miRNA omics data, which will reproduce the results in our study.
 
 1. get the data.

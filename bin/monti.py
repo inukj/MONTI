@@ -7,32 +7,26 @@ from decompose_tensor import *
 from featureselection import *
 from geneselection import *
 from drawplots import *
-from preprocess_data import *
 
 if __name__=='__main__':
 
 	info = parse_args()	# parsing input arguements
 
 	valid=sanity_check(info)	# check input data
-	if not valid: sys.exit();	# ERROR, some input files are incorrect
+	if not valid: sys.exit();
 
 	progress_check(info)
-
-	preprocess(info)	# preprocess data (log2, quantile normalization, tensor formation)
-
-	make_env(info)	# create output directory
+	make_env(info)
 
 	dat_info=get_sample_info(info)	# get information on sample labels
-	print_init(info, dat_info)	# print init messages
+	print_init(info, dat_info)		# print init messages
 
-	decompose_tensor(info)	# run PARAFAC
-
-	select_features(info, dat_info)	# select cancer subtype associated features
-
-	get_featuregenes(info, dat_info)	# select cancer subtype associated genes
+	decompose_tensor(info)			# run PARAFAC
+	select_features(info, dat_info)	# selecting features
+	get_featuregenes(info, dat_info) # selecting feature associated genes
 
 	if info.plot:
-		plot_genes(info, dat_info)		# draw plots
+		plot_genes(info, dat_info)			# draw plots
 		plot_sample_tSNE(info, dat_info)	# draw sample t-SNE plot
 
 	
