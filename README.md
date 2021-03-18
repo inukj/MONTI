@@ -45,17 +45,17 @@ usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO
 
 Due to the nature of selecting features include some randomness (repeated 10-fold cross validation, random splitting of test and train samples), the results from our study cannot be completely reproduced. However, the variance should not be significant.
 
-Please follow the instructions below.
+To reproduce the results in our study, please follow the instructions below.
 1. Installing MONTI	(uncompress files & install required modules)
-```bash
-tar -xzvf monti_v1.3.tar.gz
-sudo python3 install_monti.py
-```
+  ```bash
+  tar -xzvf monti_v1.3.tar.gz
+  sudo python3 install_monti.py
+  ```
 
 2. Execute MONTI using the previously decomposed components
-```bash
-python3 monti.py -f inputdata/tensor_BRCA_log2_qnormalized_scaled.npy -r 450 -s inputdata/sample_info.txt -surv inputdata/patient_info.txt --plot -o output_paper
-```
+  ```bash
+  python3 monti.py -f inputdata/tensor_BRCA_log2_qnormalized_scaled.npy -r 450 -s inputdata/sample_info.txt --plot -o output_paper
+  ```
 
 3. The following result files can be found under the "output_paper" directory
 	> sample_features_r450.txt: the breast cancer subtype associated patient features
