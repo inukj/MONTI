@@ -22,22 +22,22 @@ The output of MONTI is a simple gene list with information of their associated s
 ```
 ## Running MONTI
 ```bash
-	usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO
-		[-surv SURVIVAL_INFO] [-o OUTDIR] [--plot]
-		[--dmax_iter DMAX_ITER] [--alpha ALPHA]
-		[-pre PREPROCESS_DIR]
+usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO
+	[-surv SURVIVAL_INFO] [-o OUTDIR] [--plot]
+	[--dmax_iter DMAX_ITER] [--alpha ALPHA]
+	[-pre PREPROCESS_DIR]
 
-	# mandatory arguements
-	-f : the input tensor data (a numpy ndarray)
-	-r : the number of ranks that the tensor is to be decomposed with
-	-s : a two column text file that contains sample IDs and its associated breast cancer subtype
-	-surv: a trhee column text file that contains sample IDs, survival state, time
+# mandatory arguements
+-f : the input tensor data (a numpy ndarray)
+-r : the number of ranks that the tensor is to be decomposed with
+-s : a two column text file that contains sample IDs and its associated breast cancer subtype
+-surv: a trhee column text file that contains sample IDs, survival state, time
 
-	# optional arguements
-	-o: the output directory name (default: 'output')
-	-pre: the directory of rawdata that need to be pre-processed (log2, quantile normalized, scaled and tensor merged)
-	--plot: indicator for drawing gene plots
-	--damx_iter: the number of maximum iterations during tensor decomposition (default: 300)
+# optional arguements
+-o: the output directory name (default: 'output')
+-pre: the directory of rawdata that need to be pre-processed (log2, quantile normalized, scaled and tensor merged)
+--plot: indicator for drawing gene plots
+--damx_iter: the number of maximum iterations during tensor decomposition (default: 300)
 	--alpha: the L1 penalty weight (default: 0.01)
 ```
 
@@ -48,13 +48,13 @@ Due to the nature of selecting features include some randomness (repeated 10-fol
 Please follow the instructions below.
 1. Installing MONTI	(uncompress files & install required modules)
 ```bash
-	tar -xzvf monti_v1.3.tar.gz
-	sudo python3 install_monti.py.
+tar -xzvf monti_v1.3.tar.gz
+sudo python3 install_monti.py
 ```
 
 2. Execute MONTI using the previously decomposed components
 ```bash
-	python3 monti.py -f inputdata/tensor_BRCA_log2_qnormalized_scaled.npy -r 450 -s inputdata/sample_info.txt -surv inputdata/patient_info.txt --plot -o output_paper
+python3 monti.py -f inputdata/tensor_BRCA_log2_qnormalized_scaled.npy -r 450 -s inputdata/sample_info.txt -surv inputdata/patient_info.txt --plot -o output_paper
 ```
 
 3. The following result files can be found under the "output_paper" directory
