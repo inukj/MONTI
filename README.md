@@ -93,7 +93,7 @@ monti_input_dir="dataset/COAD/inputdata/"
 bin/samp_to_mat.py -i dataset/COAD/data/omics_COAD_gene_genecentric.csv dataset/COAD/data/omics_COAD_meth450_genecentric.csv dataset/COAD/data/omics_COAD_mirna_genecentric.csv -s dataset/COAD/data/subtype_info.txt -l subtype -g annotation/gene_info_withheader.txt -o $monti_input_dir
 ```
 
-3. Run MONTI
+3. Run MONTI  
 The tensor decomposition takes time, hence, we will use a pre-decomposed data. The pre-decomposed data is located in `dataset/COAD/output/components/r150_td.npy`.
 ``` bash
 rank=150
