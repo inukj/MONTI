@@ -66,13 +66,27 @@ usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO -g GENE_INFO
 -o:	 the output directory name (default: 'output')
 ```
 
-## MONTI tutorial using COAD omics data (mRNA, methylaion, miRNA)
+## Output of MONTI
+In the output directory, 
+* sample_features_<rank>.txt: the index of selected features and their labels
+* feature_genes_<rank>.txt: the feature associated genes
+* accuracy_patients_r<rank>.txt: the classification accuracy using patient features
+* accuracy_genes_r<rank>.txt: the classification accuracy using fea
+* patient_models/: the classification models generated using the patient features
+* gene_models/: the classification models generated using the gene features
+* plots/: 
+	gene_plots_<subtype>.pdf: multi-omics scatter plot of the feature associated genes
+	sample_tSNE.pdf: the t-SNE plot of the patient features
+
+---
+
+## Brief MONTI tutorial using COAD omics data (mRNA, methylaion, miRNA)
 Below is a brief tutorial using the COAD mRNA, methylation and miRNA omics data, which will reproduce the results in our study.
 
 1. get the data.
 ```bash
-cd <path to MONTI>/dataset/COAD
-tar -xzvf data.tar.gz
+cd <path to MONTI>/dataset
+tar -xzvf COAD_data.tar.gz
 ```
 
 2. Generate input data
@@ -83,74 +97,10 @@ bin/samp_to_mat.py -i dataset/COAD/data/omics_COAD_gene_genecentric.csv dataset/
 ```
 
 ### running MONTI
+The tensor decomposition takes time, hence, we will use a pre-decomposed data. The pre-decomposed data is located in `dataset/COAD/output/components/r150_td.npy`.
 ``` bash
 rank=150
 monti_outputdir="dataset/COAD/output"
 bin/monti.py -f $monti_input_dir/tensor.subtype.npy -s $monti_input_dir/sampinfo_subtype.txt -g $monti_input_dir/geneinfo_subtype.txt -r $rank -o $monti_outputdir --plot
 ```
 
-
-The tensor decomposition takes time, hence, we will use a pre-decomposed data.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Execute MONTI using the previously decomposed components
-  ```bash
-  python3 monti.py -f inputdata/tensor_BRCA_log2_qnormalized_scaled.npy -r 450 -s inputdata/sample_info.txt --plot -o output_paper
-  ```
-
-### The following result files can be found under the "output_paper" directory
-	> sample_features_r450.txt: the breast cancer subtype associated patient features
-	> feature_genes_r450.txt: the feature associated genes
-	> accuracy_patients_r450.txt: the classification accuracy using patient features
-	> accuracy_genes_r450.txt: the classification accuracy using feature genes
-	> survival_patients_plot.pdf: survival plots using patient features
-	> survival_genes_plot.pdf: survival plots using feature genes
-	> patient_models/: the MLP classification models generated using the patient features
-	> gene_models//: the MLP classification models generated using the gene features
-	> plots/: 
-		> gene_plots_<subtype>.pdf: multi-omics scatter plot of the <subtype> associated genes
-		> sample_tSNE.pdf: the t-SNE plot using patient features
-
----
-
-## Using the STAD data
-
-### Generate input data for MONTI
-```bash
-monti_input_dir="dataset/STAD/inputdata"
-bin/samp_to_mat.py -i dataset/STAD/data/omics_STAD_gene_genecentric.csv dataset/STAD/data/omics_STAD_meth450_genecentric.csv dataset/STAD/data/omics_STAD_mirna_genecentric.csv -s dataset/STAD/subtype_info.txt -r subtype -g dataset/gene_info_withheader.txt -o $monti_input_dir
-```
-
-### running MONTI
-```bash
-rank=150	# number of ranks (features)
-monti_outputdir="dataset/STAD/output"
-bin/monti.py -f $monti_input_dir/tensor.subtype.npy -s $monti_input_dir/sampinfo_subtype.txt -g $monti_input_dir/geneinfo_subtype.txt -r $rank -o $monti_outputdir --plot
-```
-
-## Using the COAD data
-
-### Generate input data for MONTI
-``` bash
-monti_input_dir="dataset/COAD/inputdata"
-bin/samp_to_mat.py -i dataset/COAD/data/omics_COAD_gene_genecentric.csv dataset/COAD/data/omics_COAD_meth450_genecentric.csv dataset/COAD/data/omics_COAD_mirna_genecentric.csv -s dataset/COAD/data/subtype_info.txt -r subtype -g dataset/gene_info_withheader.txt  -o $monti_input_dir
-```
-
-### running MONTI
-``` bash
-rank=150
-monti_outputdir="dataset/COAD/output"
-bin/monti.py -f $monti_input_dir/tensor.subtype.npy -s $monti_input_dir/sampinfo_subtype.txt -g $monti_input_dir/geneinfo_subtype.txt -r $rank -o $monti_outputdir --plot
-```
