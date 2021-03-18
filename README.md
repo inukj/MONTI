@@ -64,7 +64,7 @@ usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO -g GENE_INFO
 ```
 
 ## Output of MONTI
-In the output directory, 
+In the output directory the following output files can be found. 
 * sample_features_<rank>.txt: the index of selected features and their labels
 * feature_genes_<rank>.txt: the feature associated genes
 * accuracy_patients_r<rank>.txt: the classification accuracy using patient features
@@ -93,8 +93,8 @@ monti_input_dir="dataset/COAD/inputdata/"
 bin/samp_to_mat.py -i dataset/COAD/data/omics_COAD_gene_genecentric.csv dataset/COAD/data/omics_COAD_meth450_genecentric.csv dataset/COAD/data/omics_COAD_mirna_genecentric.csv -s dataset/COAD/data/subtype_info.txt -l subtype -g annotation/gene_info_withheader.txt -o $monti_input_dir
 ```
 
-### running MONTI
-The tensor decomposition takes time, hence, we will use a pre-decomposed data. The pre-decomposed data is located in `dataset/COAD/output/components/r150_td.npy`.
+3. running MONTI
+>The tensor decomposition takes time, hence, we will use a pre-decomposed data. The pre-decomposed data is located in `dataset/COAD/output/components/r150_td.npy`.
 ``` bash
 rank=150
 monti_outputdir="dataset/COAD/output"
