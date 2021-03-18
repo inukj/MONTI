@@ -55,10 +55,9 @@ usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO -g GENE_INFO
 
 # optional arguements
 --damx_iter the number of maximum iterations during tensor decomposition (default: 300)
---alpha 	the L1 penalty weight (default: 0.01)
---plot 		indicator for drawing gene plots
--o 			the output directory name (default: 'output')
-
+--alpha the L1 penalty weight (default: 0.01)
+--plot for drawing gene plots
+-o the output directory name (default: 'output')
 ```
 
 ## Reproducing results in the paper
