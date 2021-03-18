@@ -6,7 +6,7 @@ def install(packages):
 	subprocess.call([sys.executable, "-m", "pip", "install", package])
 
 if __name__=='__main__':
-	required_packages=['tensorly', 'argparse', 'joblib', 'matplotlib', 'lifelines', 'seaborn']
+	required_packages=['tensorly', 'argparse', 'joblib', 'matplotlib', 'lifelines', 'seaborn', 'qnorm']
 	strout=[]
 	valid=1
 	for package in required_packages:

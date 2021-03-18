@@ -13,12 +13,17 @@ The output of MONTI is a simple gene list with information of their associated s
 
 ---
 
+## Download MONTI
+```bash
+git clone https://github.com/inukj/MONTI.git
+```
+
 ## Installing MONTI
 
 ### Prerequisites
 * Python version>=3.6 is required
 * The python modules below are required which can be installed manually or using the `install_monti.py` script
-  * `tensorly`, `argparse`, `joblib`, `matplotlib`, `lifelines`, `seaborn`
+  * `tensorly`, `argparse`, `joblib`, `matplotlib`, `lifelines`, `seaborn`, `qnorm`
 
 ## Running MONTI
 
@@ -41,7 +46,7 @@ usage: samp_to_mat.py [-h] -i OMICS1_FILE OMICS2_FILE OMICS3_FILE ... -s SAMPLE_
 -o: the output path
 ```
 
-Now, if the input data are prepared, MONTI can be run as follows:
+Now MONTI can be run using the input data as follows:
 ```bash
 usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO -g GENE_INFO
 	[-surv SURVIVAL_INFO] [-o OUTDIR] [--plot]
@@ -61,11 +66,45 @@ usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO -g GENE_INFO
 -o:	 the output directory name (default: 'output')
 ```
 
-## Reproducing results in the paper
+## MONTI tutorial 
+Below is a brief tutorial using the COAD mRNA, methylation and miRNA omics data, which will reproduce the results in our study.
 
-Due to the nature of selecting features include some randomness (repeated 10-fold cross validation, random splitting of test and train samples), the results from our study cannot be completely reproduced. However, the variance should not be significant.
+1. get the data.
+```bash
+cd <path to MONTI>/dataset/COAD
+tar -xzvf data.tar.gz
+```
 
-To reproduce the results in our study, please follow the instructions below.
+2. Generate input data
+``` bash
+cd <path to MONTI>
+monti_input_dir="dataset/COAD/inputdata/"
+bin/samp_to_mat.py -i dataset/COAD/data/omics_COAD_gene_genecentric.csv dataset/COAD/data/omics_COAD_meth450_genecentric.csv dataset/COAD/data/omics_COAD_mirna_genecentric.csv -s dataset/COAD/data/subtype_info.txt -l subtype -g annotation/gene_info_withheader.txt -o $monti_input_dir
+```
+
+### running MONTI
+``` bash
+rank=150
+monti_outputdir="dataset/COAD/output"
+bin/monti.py -f $monti_input_dir/tensor.subtype.npy -s $monti_input_dir/sampinfo_subtype.txt -g $monti_input_dir/geneinfo_subtype.txt -r $rank -o $monti_outputdir --plot
+```
+
+
+The tensor decomposition takes time, hence, we will use a pre-decomposed data.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Execute MONTI using the previously decomposed components
   ```bash
   python3 monti.py -f inputdata/tensor_BRCA_log2_qnormalized_scaled.npy -r 450 -s inputdata/sample_info.txt --plot -o output_paper
