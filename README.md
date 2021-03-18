@@ -18,7 +18,7 @@ The output of MONTI is a simple gene list with information of their associated s
 
 ## Installing MONTI
 ```bash
-	$ sudo python install_monti.py
+sudo python install_monti.py
 ```
 ## Running MONTI
 ```bash
