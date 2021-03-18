@@ -97,8 +97,8 @@ bin/samp_to_mat.py -i dataset/COAD/data/omics_COAD_gene_genecentric.csv dataset/
 The tensor decomposition takes time, hence, we will use a pre-decomposed data. The pre-decomposed data is located in `dataset/COAD/output/components/r150_td.npy`.
 ``` bash
 rank=150
-monti_outputdir="dataset/COAD/output"
-bin/monti.py -f $input_dir/tensor.subtype.npy -s $input_dir/sampinfo_subtype.txt -g $input_dir/geneinfo_subtype.txt -r $rank -o $monti_outputdir --plot
+outputdir="dataset/COAD/output"
+bin/monti.py -f $input_dir/tensor.subtype.npy -s $input_dir/sampinfo_subtype.txt -g $input_dir/geneinfo_subtype.txt -r $rank -o $outputdir --plot
 ```
 
 
