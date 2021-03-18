@@ -15,6 +15,8 @@ The output of MONTI is a simple gene list with information of their associated s
 
 ## Prerequisites
 * Python version>=3.6 is required
+* The python modules below are required which can be installed using the 'install_monti.py' script
+  * 'tensorly', 'argparse', 'joblib', 'matplotlib', 'lifelines', 'seaborn'
 
 
 ## Installing MONTI
