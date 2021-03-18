@@ -22,27 +22,43 @@ The output of MONTI is a simple gene list with information of their associated s
 
 ## Running MONTI
 
-The input to MONTI are gene-centric omics matrices. All the omics matrices have same dimensions, which are matrices of _m x n_. Here, _m_ is the number of genes and _n_ the number of patients. Hence, every omics data are bundled into units of genes to generate a gene-centric matrix.
+The input to MONTI are gene-centric omics matrices. The omics matrices must be of the same dimensions, which are matrices of _m x n_. Here, _m_ is the number of genes and _n_ the number of patients. Hence, every omics data are bundled into units of genes to generate a gene-centric matrix.
+
+Assuming that the omics are processed into gene-centric format, each omics data are further pre-processed. This can be using the `samp_to_mat.py` code, which compiles omics into patient matched data and normalizes data accordingly. For example, if mRNA, methylation and miRNA omics data are given, patients with all the three omics data are selected, which will serve as the data used by MONTI. The output of `samp_to_mat.py` is the input data used by MONTI. Users may prepare their own omics data.
 
 
 ```bash
-usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO
+usage: samp_to_mat.py [-h] -i OMICS1_FILE OMICS2_FILE OMICS3_FILE ... -s SAMPLE_INFO -g GENE_INFO
+	[-l GROUP_LABEL] [-o OUTDIR]
+
+# mandatory arguements
+-i the omics matrices in CSV format
+-s a two column text file that contains sample IDs and their clinical features (e.g., subtype)
+-g a two column text file including the genes to be used (by default a list or 14K protein coding genes are provided)
+
+# optional arguements
+-l the label of the group (just an indicator)
+-o the output path
+```
+
+```bash
+usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO -g GENE_INFO
 	[-surv SURVIVAL_INFO] [-o OUTDIR] [--plot]
 	[--dmax_iter DMAX_ITER] [--alpha ALPHA]
 	[-pre PREPROCESS_DIR]
 
 # mandatory arguements
--f : the input tensor data (a numpy ndarray)
--r : the number of ranks that the tensor is to be decomposed with
--s : a two column text file that contains sample IDs and its associated breast cancer subtype
--surv: a trhee column text file that contains sample IDs, survival state, time
+-f the input tensor data (a numpy ndarray)
+-r the number of ranks which the tensor is to be decomposed
+-s a two column text file that contains sample IDs and its associated breast cancer subtype
+-g a two column text file including the genes to be used (by default a list or 14K protein coding genes are provided)
 
 # optional arguements
--o: the output directory name (default: 'output')
--pre: the directory of rawdata that need to be pre-processed (log2, quantile normalized, scaled and tensor merged)
---plot: indicator for drawing gene plots
---damx_iter: the number of maximum iterations during tensor decomposition (default: 300)
-	--alpha: the L1 penalty weight (default: 0.01)
+--damx_iter the number of maximum iterations during tensor decomposition (default: 300)
+--alpha 	the L1 penalty weight (default: 0.01)
+--plot 		indicator for drawing gene plots
+-o 			the output directory name (default: 'output')
+
 ```
 
 ## Reproducing results in the paper
@@ -50,12 +66,12 @@ usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO
 Due to the nature of selecting features include some randomness (repeated 10-fold cross validation, random splitting of test and train samples), the results from our study cannot be completely reproduced. However, the variance should not be significant.
 
 To reproduce the results in our study, please follow the instructions below.
-> Execute MONTI using the previously decomposed components
+### Execute MONTI using the previously decomposed components
   ```bash
   python3 monti.py -f inputdata/tensor_BRCA_log2_qnormalized_scaled.npy -r 450 -s inputdata/sample_info.txt --plot -o output_paper
   ```
 
-> The following result files can be found under the "output_paper" directory
+### The following result files can be found under the "output_paper" directory
 	> sample_features_r450.txt: the breast cancer subtype associated patient features
 	> feature_genes_r450.txt: the feature associated genes
 	> accuracy_patients_r450.txt: the classification accuracy using patient features
@@ -67,7 +83,6 @@ To reproduce the results in our study, please follow the instructions below.
 	> plots/: 
 		> gene_plots_<subtype>.pdf: multi-omics scatter plot of the <subtype> associated genes
 		> sample_tSNE.pdf: the t-SNE plot using patient features
-
 
 ---
 
