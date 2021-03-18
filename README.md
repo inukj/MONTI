@@ -90,7 +90,7 @@ tar -xzvf COAD_data.tar.gz
 ``` bash
 cd <path to MONTI>
 input_dir="dataset/COAD/inputdata/"
-bin/samp_to_mat.py -i dataset/COAD/data/omics_COAD_gene_genecentric.csv dataset/COAD/data/omics_COAD_meth450_genecentric.csv dataset/COAD/data/omics_COAD_mirna_genecentric.csv -s dataset/COAD/data/subtype_info.txt -l subtype -g annotation/gene_info_withheader.txt -o $input_dir
+python bin/samp_to_mat.py -i dataset/COAD/data/omics_COAD_gene_genecentric.csv dataset/COAD/data/omics_COAD_meth450_genecentric.csv dataset/COAD/data/omics_COAD_mirna_genecentric.csv -s dataset/COAD/data/subtype_info.txt -l subtype -g annotation/gene_info_withheader.txt -o $input_dir
 ```
 
 3. Run MONTI  
@@ -98,7 +98,7 @@ The tensor decomposition takes time, hence, we will use a pre-decomposed data. T
 ``` bash
 rank=150
 outputdir="dataset/COAD/output"
-bin/monti.py -f $input_dir/tensor.subtype.npy -s $input_dir/sampinfo_subtype.txt -g $input_dir/geneinfo_subtype.txt -r $rank -o $outputdir --plot
+python bin/monti.py -f $input_dir/tensor.subtype.npy -s $input_dir/sampinfo_subtype.txt -g $input_dir/geneinfo_subtype.txt -r $rank -o $outputdir --plot
 ```
 
 
