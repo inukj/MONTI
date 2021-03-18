@@ -65,7 +65,7 @@ def samp2mat():
 	parser.add_argument('-i', '--exprmat', type=str, nargs='+', help='list of all available omics samples', required=True)
 	parser.add_argument('-s', '--sample_info', type=str, help='label information of samples', required=True)
 	parser.add_argument('-g', '--gene_info', type=str, help='list of genes to be used', required=True)
-	parser.add_argument('-r', '--group_name', type=str, help='name of group', required=True)
+	parser.add_argument('-l', '--group_label', type=str, help='label of group', required=True)
 
 	# optional arguements
 	parser.add_argument('-o', '--outdir', type=str, default='input_data', help='output directory', required=False)
@@ -77,6 +77,6 @@ def samp2mat():
 	info.outdir = args['outdir']
 	info.sampinfo = args['sample_info']
 	info.geneinfo = args['gene_info']
-	info.group = args['group_name']
+	info.group = args['group_label']
 	
 	return info
