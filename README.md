@@ -19,14 +19,11 @@ git clone https://github.com/inukj/MONTI.git
 ```
 
 ## Installing MONTI
-
-### Prerequisites
 * Python version>=3.6 is required
 * The python modules below are required which can be installed manually or using the `install_monti.py` script
   * `tensorly`, `argparse`, `joblib`, `matplotlib`, `lifelines`, `seaborn`, `qnorm`
 
 ## Running MONTI
-
 The input to MONTI are gene-centric omics matrices. The omics matrices must be of the same dimensions, which are matrices of _m x n_. Here, _m_ is the number of genes and _n_ the number of patients. Hence, every omics data are bundled into units of genes to generate a gene-centric matrix.
 
 Assuming that the omics are processed into gene-centric format, each omics data are further pre-processed. This can be done using the `samp_to_mat.py` code, which compiles omics into patient matched data and normalizes data accordingly. For example, if mRNA, methylation and miRNA omics data are given, patients with all the three omics data are selected, which will serve as the data used by MONTI. The output of `samp_to_mat.py` is the input data used by MONTI. Users may prepare their own omics data.
