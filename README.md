@@ -78,7 +78,7 @@ In the output directory the following output files can be found.
 ---
 
 ## Brief MONTI tutorial using COAD omics data (mRNA, methylaion, miRNA)
-Below is a brief tutorial using the COAD mRNA, methylation and miRNA omics data, which will reproduce the results in our study.
+Below is a brief tutorial using the COAD (Colon adenocarcinoma) mRNA, methylation and miRNA omics data, which will reproduce the results in our study.
 
 1. Get the data
 ```bash
