@@ -21,6 +21,10 @@ The output of MONTI is a simple gene list with information of their associated s
   * `tensorly`, `argparse`, `joblib`, `matplotlib`, `lifelines`, `seaborn`
 
 ## Running MONTI
+
+The input to MONTI are gene-centric omics matrices. All the omics matrices have same dimensions, which are matrices of _m x n_. Here, _m_ is the number of genes and _n_ the number of patients. Hence, every omics data are bundled into units of genes to generate a gene-centric matrix.
+
+
 ```bash
 usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO
 	[-surv SURVIVAL_INFO] [-o OUTDIR] [--plot]
