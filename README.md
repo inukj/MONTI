@@ -13,6 +13,66 @@ The output of MONTI is a simple gene list with information of their associated s
 
 ---
 
+# MONTI v1.0
+# Python version>=3.6 is required to run MONTI
+
+Installing MONTI
+```bash
+	$ sudo python install_monti.py
+```
+Running MONTI
+```bash
+	usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO
+					[-surv SURVIVAL_INFO] [-o OUTDIR] [--plot]
+					[--dmax_iter DMAX_ITER] [--alpha ALPHA]
+					[-pre PREPROCESS_DIR]
+
+	# mandatory arguements
+	-f : the input tensor data (a numpy ndarray)
+	-r : the number of ranks that the tensor is to be decomposed with
+	-s : a two column text file that contains sample IDs and its associated breast cancer subtype
+	-surv: a trhee column text file that contains sample IDs, survival state, time
+
+	# optional arguements
+	-o: the output directory name (default: 'output')
+	-pre: the directory of rawdata that need to be pre-processed (log2, quantile normalized, scaled and tensor merged)
+	--plot: indicator for drawing gene plots
+	--damx_iter: the number of maximum iterations during tensor decomposition (default: 300)
+	--alpha: the L1 penalty weight (default: 0.01)
+```
+
+*** Reproducing results in the paper. ***
+
+Due to the nature of selecting features include some randomness (repeated 10-fold cross validation, random splitting of test and train samples), the results from our study cannot be completely reproduced. However, the variance should not be significant.
+
+Please follow the instructions below.
+	1. Installing MONTI	(uncompress files & install required modules)
+	```bash
+		tar -xzvf monti_v1.3.tar.gz
+		sudo python3 install_monti.py.
+	```
+
+	2. Execute MONTI using the previously decomposed components
+	```bash
+		python3 monti.py -f inputdata/tensor_BRCA_log2_qnormalized_scaled.npy -r 450 -s inputdata/sample_info.txt -surv inputdata/patient_info.txt --plot -o output_paper
+	```
+
+	3. The following result files can be found under the "output_paper" directory
+		> sample_features_r450.txt: the breast cancer subtype associated patient features
+		> feature_genes_r450.txt: the feature associated genes
+		> accuracy_patients_r450.txt: the classification accuracy using patient features
+		> accuracy_genes_r450.txt: the classification accuracy using feature genes
+		> survival_patients_plot.pdf: survival plots using patient features
+		> survival_genes_plot.pdf: survival plots using feature genes
+		> patient_models/: the MLP classification models generated using the patient features
+		> gene_models//: the MLP classification models generated using the gene features
+		> plots/: 
+			> gene_plots_<subtype>.pdf: multi-omics scatter plot of the <subtype> associated genes
+			> sample_tSNE.pdf: the t-SNE plot using patient features
+
+
+---
+
 ## Using the STAD data
 
 ### Generate input data for MONTI
