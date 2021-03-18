@@ -49,14 +49,14 @@ usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO -g GENE_INFO
 
 # mandatory arguements
 -f: the input tensor data (a numpy ndarray)
--r: the number of ranks which the tensor is to be decomposed
+-r: the number of ranks which the tensor is to be decomposed (type: int)
 -s: a two column text file that contains sample IDs and its associated breast cancer subtype
 -g: a two column text file including the genes to be used (by default a list or 14K protein coding genes are provided)
 
 # optional arguements
 --damx_iter: the number of maximum iterations during tensor decomposition (default: 300)
---alpha:	the L1 penalty weight (default: 0.01)
---plot:	 for drawing gene plots
+--alpha: the L1 penalty weight (type: float, default: 0.01)
+--plot:	 if set tSNE and omics correlation plots are drawn
 -o:	 the output directory name (default: 'output')
 ```
 
