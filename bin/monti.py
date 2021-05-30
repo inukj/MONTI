@@ -2,15 +2,12 @@ import sys
 import subprocess
 import numpy as np
 import pandas as pd
-from pathlib import Path
 import qnorm
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 from sklearn import linear_model
 from sklearn import metrics
-
 
 __version__="1.0"
 
@@ -47,7 +44,7 @@ def proc_scale(d):
 	df_s=df_s.round(6)
 	return df_s
 
-def make_mir_gcentric(mirf, mrnaf):
+def make_mir_gcentric(mirf, mrnaf, mirtarget):
 	sep=','
 	print('reading mirna file...')
 	rf = open(mirf)
@@ -62,8 +59,6 @@ def make_mir_gcentric(mirf, mrnaf):
 		miExprs[miName] = list(map(lambda x: float(x), token[1:]))
 	rf.close()
 
-
-	# rf = open('%s/data/omics_gene_mat.txt'%(basedir))
 	rf = open(mrnaf)
 	gene_barcodes = rf.readline().strip().split(sep)[1:]
 	geneExprs = dict()
@@ -95,7 +90,7 @@ def make_mir_gcentric(mirf, mrnaf):
 		geneExprs[geneName] = newLst
 
 	print('reading mirna gene target file...')
-	rf = open('/data1/projects/monti/revision/monti_env/annotation/mirna_gene_pairs.txt')
+	rf = open(mirtarget)
 	targetRevDict = dict()
 	while(True):
 		line = rf.readline()
@@ -146,7 +141,7 @@ def make_mir_gcentric(mirf, mrnaf):
 	
 
 
-def make_methylation_gcentric(methf, mrnaf):
+def make_methylation_gcentric(methf, mrnaf, gtid, methpromprob):
 	sep=','
 	rf = open(methf)
 	meth_barcodes = rf.readline().strip().split(sep)[1:]
@@ -197,12 +192,12 @@ def make_methylation_gcentric(methf, mrnaf):
 
 	# tid to gid converstion dictionary
 	gid_dict={}
-	for line in open('/data1/projects/monti/revision/monti_env/annotation/gid_tid.txt'):
+	for line in open(gtid):
 		gid, tid=line.strip().split('\t')
 		gid_dict[tid]=gid
 
 	print('reading TSS promoter probe annotation...')
-	rf = open('/data1/projects/monti/revision/monti_env/annotation/promoter_probes.txt')
+	rf = open(methpromprob)
 	targetRevDict = dict()
 	while(True):
 		line = rf.readline()
@@ -370,7 +365,7 @@ def select_features(P, alpha, dat_info, odir, cvidx):
 					for f in uf: unionfeats.add(f)
 		selfeats=unionfeats
 
-		print("\nSelected features:\t%d"%(len(selfeats)))
+		print("Selected features:\t%d\n"%(len(selfeats)))
 
 		# write selected features to file
 		stfeatures=[]

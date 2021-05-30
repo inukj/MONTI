@@ -236,28 +236,3 @@ def plot_gene(modata, cv, gidx, dat_info):
 	plt.show()
 
 	return
-
-	# pcorstr="%s (%s)\nr = %g\np = %g"%(gsym, g_st_dict[gidx], pcorgenes[g][ridx+5], pcorgenes[g][ridx+1])
-
-	# ax.text2D(0.91, -0.02, s=pcorstr, fontsize=10, transform=ax.transAxes)
-
-	# annotate subtypes with line bars
-	# s_ind=0
-	# for stidx, st in enumerate(dat_info.samp_labels):
-	# 	e_ind=s_ind+dat_info.samp_labels[st]
-	# 	ax.plot([s_ind,e_ind], [1,1], '-', c=color_palette[stidx], zdir='y', linewidth=3, zs=1.03) # subtype bars
-	# 	s_ind+=dat_info.samp_labels[st]
-
-	# ax.set_xlabel('Samples')
-	# ax.set_ylabel('%s'%(omics_label[ridx][0]))
-	# ax.set_zlabel('%s'%(omics_label[ridx][1]))
-
-	# ax.set_ylim([0, 1])
-	# ax.set_zlim([0, 1])
-
-
-
-# survival plots
-
-
-
