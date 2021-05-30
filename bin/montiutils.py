@@ -194,8 +194,6 @@ def plot_gene(modata, cv, gidx, dat_info):
 	gsym=dat_info.genelist[dat_info.genelist['ENSGID']==ensgid]['GeneSymbol'].values[0]
 
 	x=np.arange(dat_info.data_n)
-	# y=modata['gene'].iloc[gidx,:]	# pair 1
-	# z=modata['methylation'].iloc[gidx,:]	# pair 2
 	y=cv.train_data[0, gidx, :]	# pair 1
 	z=cv.train_data[1, gidx, :]	# pair 2
 	
