@@ -24,83 +24,14 @@ git clone https://github.com/inukj/MONTI.git
   * `tensorly`, `argparse`, `joblib`, `matplotlib`, `lifelines`, `seaborn`, `qnorm`
 
 ## Running MONTI
-The input to MONTI are gene-centric omics matrices. The omics matrices must be of the same dimensions, which are matrices of _m x n_. Here, _m_ is the number of genes and _n_ the number of patients. Hence, every omics data are bundled into units of genes to generate a gene-centric matrix.
+The input to MONTI are gene-level omics matrices. The omics matrices must be of the same dimensions, which are matrices of _m x n_. Here, _m_ is the number of genes and _n_ the number of patients. Hence, every omics data are bundled into units of genes to generate a gene-level matrix.
 
-Assuming that the omics are processed into gene-centric format, each omics data are further pre-processed. This can be done using the `samp_to_mat.py` code, which compiles omics into patient matched data and normalizes data accordingly. For example, if mRNA, methylation and miRNA omics data are given, patients with all the three omics data are selected, which will serve as the data used by MONTI. The output of `samp_to_mat.py` is the input data used by MONTI. Users may prepare their own omics data.
+A well documented jupyter notebook is available in the link below.
+https://github.com/inukj/MONTI/blob/main/monti_tutorial_coad.ipynb
 
 
-```bash
-usage: samp_to_mat.py [-h] -i OMICS1_MAT OMICS2_MAT OMICS3_MAT ... -s SAMPLE_INFO -g GENE_INFO
-	[-l GROUP_LABEL] [-o OUTDIR]
-
-# mandatory arguements
--i: the omics matrices in CSV format
--s: a two column text file that contains sample IDs and their clinical features (e.g., subtype)
--g: a two column text file including the genes to be used (by default a list or 14K protein coding genes are provided)
-
-# optional arguements
--l: the label of the group (just an indicator)
--o: the output path
-```
-
-Now MONTI can be run using the input data as follows:
-```bash
-usage: monti.py [-h] -f INPUT_FILE -r RANK -s SAMPLE_INFO -g GENE_INFO
-	[-surv SURVIVAL_INFO] [-o OUTDIR] [--plot]
-	[--dmax_iter DMAX_ITER] [--alpha ALPHA]
-	[-pre PREPROCESS_DIR]
-
-# mandatory arguements
--f: the input tensor data (a numpy ndarray)
--r: the number of ranks which the tensor is to be decomposed (type: int)
--s: a two column text file that contains sample IDs and its associated breast cancer subtype
--g: a two column text file including the genes to be used (by default a list or 14K protein coding genes are provided)
-
-# optional arguements
---damx_iter: the number of maximum iterations during tensor decomposition (default: 300)
---alpha: the L1 penalty weight (type: float, default: 0.01)
---plot:	 if set tSNE and omics correlation plots are drawn
--o:	 the output directory name (default: 'output')
-```
-
-## Output of MONTI
-In the output directory the following output files can be found. 
-* sample_features_<rank>.txt: the index of selected features and their labels
-* feature_genes_<rank>.txt: the feature associated genes
-* accuracy_patients_r<rank>.txt: the classification accuracy using patient features
-* accuracy_genes_r<rank>.txt: the classification accuracy using fea
-* patient_models/: the classification models generated using the patient features
-* gene_models/: the classification models generated using the gene features
-* plots/: 
-* gene_plots_<subtype>.pdf: multi-omics scatter plot of the feature associated genes
-	sample_tSNE.pdf: the t-SNE plot of the patient features
-
----
-
-## Tutorial using COAD omics data (mRNA, methylaion, miRNA)
-Below is a brief tutorial using the TCGA-COAD (Colon adenocarcinoma) mRNA, methylation and miRNA omics data, which will reproduce the results in our study.
-
-1. Get the data
-```bash
-cd <path to MONTI>/dataset
-tar -xzvf COAD_data.tar.gz
-```
-
-2. Generate input data
-``` bash
-cd <path to MONTI>
-input_dir="dataset/COAD/inputdata/"
-python bin/samp_to_mat.py -i dataset/COAD/data/omics_COAD_gene_genecentric.csv dataset/COAD/data/omics_COAD_meth450_genecentric.csv dataset/COAD/data/omics_COAD_mirna_genecentric.csv -s dataset/COAD/data/subtype_info.txt -l subtype -g dataset/gene_list.txt -o $input_dir
-```
-
-3. Run MONTI  
-The tensor decomposition takes time, hence, we will use a pre-decomposed data. The pre-decomposed data is located in `dataset/COAD/output/components/r150_td.npy`.
-``` bash
-rank=150
-outputdir="dataset/COAD/output"
-python bin/monti.py -f $input_dir/tensor.subtype.npy -s $input_dir/sampinfo_subtype.txt -g $input_dir/geneinfo_subtype.txt -r $rank -o $outputdir --plot
-```
-
+The tutorial includes the full procedure of analyzing the colon cancer subtype data (TCGA-COAD), including raw data processing, gene-level transofrmation and subtype associated gene selection.
+Also, various plotting functions are available for visualizing the result.
 
 
 
