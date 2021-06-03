@@ -6,7 +6,7 @@ This document describes the functions and objects used by MONTI.
 
 ## Functions
 
-####make_env(@outdir)
+###make_env(@outdir)
 > creates the output directory where results will be stored
 - *@outdir* (STRING) is the path name of the directory to store the results
 > returns NULL
