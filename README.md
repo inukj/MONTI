@@ -23,6 +23,8 @@ MONTI is developed in python3 and can be installed as below
 ```bash
 python3 -m pip install monti
 ```
+## Documentation
+The functions and objects used by MONTI are documented [here](https://github.com/inukj/MONTI/blob/main/documentation/documentation.md).
 
 ## Tutorial using colon cancer data (TCGA-COAD)
 A brief tutorial for using MONTI can be found under the ['tutorial'](https://github.com/inukj/MONTI/tree/main/tutorial) directory.
