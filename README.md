@@ -13,10 +13,10 @@ The output of MONTI is a simple gene list with information of their associated s
 
 ---
 
-## Download MONTI
+<!-- ## Download MONTI
 ```bash
 git clone https://github.com/inukj/MONTI.git
-```
+``` -->
 
 ## Install MONTI
 MONTI is developed in python3 and can be installed as below
