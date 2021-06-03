@@ -19,19 +19,36 @@ git clone https://github.com/inukj/MONTI.git
 ```
 
 ## Install MONTI
-* Python version>=3.6 is required
-* The python modules below are required which can be installed manually or using the `install_monti.py` script
-  * `tensorly`, `argparse`, `joblib`, `matplotlib`, `lifelines`, `seaborn`, `qnorm`
+MONTI is developed in python3 and can be installed as below
+```bash
+pip install monti
+```
 
-## Running MONTI
-The input to MONTI are gene-level omics matrices. The omics matrices must be of the same dimensions, which are matrices of _m x n_. Here, _m_ is the number of genes and _n_ the number of patients. Hence, every omics data are bundled into units of genes to generate a gene-level matrix.
+## Tutorial using colon cancer data (TCGA-COAD)
+A brief tutorial for using MONTI can be found under the 'tutorial'(https://github.com/inukj/MONTI/tree/main/tutorial) directory.
 
-A well documented jupyter notebook is available in the link below.
+Before starting the tutorial, the dataset should be downloaded.
+After download decompress data by
+```bash
+cd <*download_path*>
+tar -xzvf tutorial_data_coad.tar.gz
+```
+
+The *download_path* should also be used as the tutorial directory, or you can simply move the data to another directory to be used for the tutorial.
+
+The data includes three omics data, 1) gene expression (mRNA), 2) methylation level and 3) miRNA expression.
+They are raw data directly collected from the TCGA portal.
+
+In the jupyter notebook below includes
+* gene-level transformation
+* normalization
+* feature selection
+* classification accuracy measurement and
+* plotting of the results
+
 https://github.com/inukj/MONTI/blob/main/monti_tutorial_coad.ipynb
 
 
-The tutorial includes the full procedure of analyzing the colon cancer subtype data (TCGA-COAD), including raw data processing, gene-level transofrmation and subtype associated gene selection.
-Also, various plotting functions are available for visualizing the result.
 
 
 
