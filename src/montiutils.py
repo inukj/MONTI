@@ -5,8 +5,9 @@ import qnorm
 import matplotlib as mpl
 # mpl.use('Agg')
 import matplotlib.pyplot as plt
-import seaborn as sns
 from matplotlib.patches import Patch
+import seaborn as sns
+from venn import venn
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.manifold import TSNE
 
@@ -25,12 +26,9 @@ class cv_object:
 	predres=None
 
 
-def make_env(odir, cv_n):
-	for i in range(cv_n):
-		Path('%s/cvs/cv_%d/out/components'%(odir, i)).mkdir(parents=True, exist_ok=True)
-		Path('%s/cvs/cv_%d/out/plots'%(odir, i)).mkdir(parents=True, exist_ok=True)
-		Path('%s/cvs/cv_%d/out/gene_models'%(odir, i)).mkdir(parents=True, exist_ok=True)
-		Path('%s/cvs/cv_%d/out/patient_models'%(odir, i)).mkdir(parents=True, exist_ok=True)
+def make_env(odir):
+	Path('%s'%(odir)).mkdir(parents=True, exist_ok=True)
+		
 
 
 ## log2 & quantile normalization
@@ -48,15 +46,21 @@ def proc_scale(d):
 	return df_s
 
 # splitting samples into train and test sets
-def split_data(modata, class_labels, genelist, odir, cv_n):
+def split_data(modata, class_labels, genelist, odir, cv_n, tratio):
 	samp_info=class_labels
 	
 	cv_lst=[]
 	for i in range(cv_n):
+		# create cv directories
+		Path('%s/cvs/cv_%d/out/components'%(odir, i)).mkdir(parents=True, exist_ok=True)
+		Path('%s/cvs/cv_%d/out/plots'%(odir, i)).mkdir(parents=True, exist_ok=True)
+		Path('%s/cvs/cv_%d/out/gene_models'%(odir, i)).mkdir(parents=True, exist_ok=True)
+		Path('%s/cvs/cv_%d/out/patient_models'%(odir, i)).mkdir(parents=True, exist_ok=True)
+
 		print('generating cross validation data set %d...'%(i))
 		cvdat=cv_object()
 
-		tratio=0.10	# ratio of test sample
+		# tratio=0.10	# ratio of test sample
 		test_idx=sorted(np.random.randint(samp_info.shape[0], size=int(samp_info.shape[0]*tratio)))	# index of test samples
 		test=samp_info.iloc[test_idx,:].sort_values('Class')
 		train=samp_info.iloc[~samp_info.index.isin(test_idx),:].sort_values('Class')
@@ -117,7 +121,7 @@ color_palette=["darkcyan", "blue", "crimson", "orange", "yellow", "saddlebrown",
 def plot_sample_features(P, fts, cv_train, dat_info):
 	selfeats=fts['FeatureIndex']
 	X_sel=P[:,selfeats]
-	tsne = TSNE(n_components=2, verbose=0, n_iter=1000, early_exaggeration=5)
+	tsne = TSNE(n_components=2, verbose=0)
 	transformed = tsne.fit_transform(X_sel)
 	xs = transformed[:,0]
 	ys = transformed[:,1]
@@ -135,8 +139,7 @@ def plot_sample_features(P, fts, cv_train, dat_info):
 
 	return plt
 
-def plot_venn(gl, dat_info):
-	from venn import venn
+def plot_venn(gl, dat_info):	
 	gdict={}
 	for gidx, g in enumerate(dat_info.groups):
 		gdict[g]=set(gl.GeneSymbol[gl['Group']==g].tolist())
