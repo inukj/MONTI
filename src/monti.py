@@ -8,7 +8,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn import linear_model
 from sklearn import metrics
 
-__version__="1.0"
+__version__="1.2.1"
 
 class data_object:
 	samples=[]
