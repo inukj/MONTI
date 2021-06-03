@@ -26,6 +26,7 @@ python3 -m pip install monti
 
 ## Tutorial using colon cancer data (TCGA-COAD)
 A brief tutorial for using MONTI can be found under the ['tutorial'](https://github.com/inukj/MONTI/tree/main/tutorial) directory.
+The associated multi-omics data are included.
 
 Before starting the tutorial, the dataset should be downloaded.
 After download decompress data by
