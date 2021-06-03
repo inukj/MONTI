@@ -39,14 +39,16 @@ The *<download_path>* should also be used as the tutorial directory, or you can 
 The data includes three omics data, 1) gene expression (mRNA), 2) methylation level and 3) miRNA expression.
 They are raw data directly collected from the TCGA portal.
 
-In the jupyter notebook below includes
+In the jupyter notebook(https://github.com/inukj/MONTI/blob/main/tutorial/tutorial_coad.ipynb) shows an example of how to integrate multi-omics data in a gene-level manner and extract features that can well distinguish the molecular subtypes of COAD.
+
+The tutorial includes the below analysis procedures:
 * gene-level transformation
 * normalization
 * feature selection
 * classification accuracy measurement and
 * plotting of the results
 
-https://github.com/inukj/MONTI/blob/main/monti_tutorial_coad.ipynb
+
 
 
 
