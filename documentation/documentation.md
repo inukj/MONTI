@@ -126,25 +126,25 @@ This document describes the functions and objects used by MONTI.
 
 ## Objects
 
-class cv_object:
-	train_data=[]
-	test_data=[]
-	train_labels=[]
-	test_labels=[]
-	samp_info=None
-	tddat=None
-	feature_samples=None
-	feature_labels=None
-	feature_genes=None
-	gene_labels=None
-	predres=None
+class cv_object
+- train_data : the multi-omics data of the train data
+- test_data : the multi-omics data of the train data
+- train_labels : sample lables of the train data
+- test_labels  : sample lables of the test data
+- samp_info=None : the object for storing the sample information of train data
+- tddat : the tensor decomposition result
+- feature_samples : the list of selected features
+- feature_labels : the list and labels of the selected features
+- feature_genes : the list of feature genes
+- gene_labels : the labels of the feature genes
+- predres : the classification accuracy result
 
 
-class data_object:
-	samples=[]
-	groups={}	
-	data_n=0
-	omics=[]
-	genelist=[]
+class data_object
+- samples=[]
+- groups={}
+- data_n=0
+- omics=[]
+- genelist=[]
 
 
