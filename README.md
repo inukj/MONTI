@@ -21,7 +21,7 @@ git clone https://github.com/inukj/MONTI.git
 ## Install MONTI
 MONTI is developed in python3 and can be installed as below
 ```bash
-pip install monti
+python3 -m pip install monti
 ```
 
 ## Tutorial using colon cancer data (TCGA-COAD)
