@@ -34,7 +34,7 @@ cd <download_path>
 tar -xzvf tutorial_data_coad.tar.gz
 ```
 
-The *download_path* should also be used as the tutorial directory, or you can simply move the data to another directory to be used for the tutorial.
+The *<download_path>* should also be used as the tutorial directory, or you can simply move the data to another directory to be used for the tutorial.
 
 The data includes three omics data, 1) gene expression (mRNA), 2) methylation level and 3) miRNA expression.
 They are raw data directly collected from the TCGA portal.
