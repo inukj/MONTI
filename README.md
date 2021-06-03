@@ -30,7 +30,7 @@ A brief tutorial for using MONTI can be found under the 'tutorial'(https://githu
 Before starting the tutorial, the dataset should be downloaded.
 After download decompress data by
 ```bash
-cd <*download_path*>
+cd <download_path>
 tar -xzvf tutorial_data_coad.tar.gz
 ```
 
