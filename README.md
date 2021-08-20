@@ -1,4 +1,5 @@
-# MONTI: A Multi-Omics Non-negative Tensor decomposition framework for the Integrated analysis of large cancer cohorts
+# MONTI: A multi-omics non-negative tensor decomposition framework for gene-level integrative analysis
+https://www.frontiersin.org/articles/10.3389/fgene.2021.682841/abstract
 
 Multi-omics data is frequently measured to characterize biological mechanisms underlying phenotypes. Complex relationships in multi-omics data, if mined, can lead to more accurate classification of patient samples according to the phenotypes.
 
