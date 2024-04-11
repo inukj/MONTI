@@ -30,6 +30,7 @@ The functions and objects used by MONTI are documented [here](https://github.com
 ## Tutorial using colon cancer data (TCGA-COAD)
 A brief tutorial for using MONTI can be found under the ['tutorial'](https://github.com/inukj/MONTI/tree/main/tutorial) directory.
 The associated multi-omics data are included.
+If the above link does not work, the tutorial data is also available ['here'](http://cobi.knu.ac.kr/tools.php).
 
 Before starting the tutorial, the dataset should be downloaded.
 After download decompress data by
